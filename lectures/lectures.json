@@ -1,0 +1,318 @@
+{
+  "course-code": "seattle-code-javascript-401n23",
+  "lectures": {
+    "module-01": {
+      "class-01": {
+        "title": "Course Introduction, Node CI/CD",
+        "link": "https://zoom.us/rec/play/EXHMKyvE6jaPEsvRNSG3FQxL9nO4hZeF_Ca52Yb4kkJntrGMk-BquXNbqz9K66WbVz0477VO5AZv0vp8.6ESdN8sW0w4__J7K?canPlayFromShare=true&from=recording_mg&startTime=1688227292000&componentName=rec-play&originRequestUrl=https%3A%2F%2Fzoom.us%2Frec%2Fshare%2FzHIpNeXh_9u4-EpOalmT5HfhSujxnN3nCUmY4D2NW7Ooh95guACNgFmp65k6Q3Xz.3iSv2aqJcOxDQql6%3FstartTime%3D1688227292000U",
+        "date": "1688227292000",
+        "instructor": "Sara Russert"
+      },
+      "class-02-lecture": {
+        "title": "How to Whiteboard: Array Reverse",
+        "link": "https://zoom.us/rec/share/0-iwSRknauZVyEg_f8cv0ufjzKss_3qRozAFjmb4WdDjW6hV9B0AUfFvw65Vh72F.l_tGG35gj45n1pWn",
+        "date": "1688434369000",
+        "instructor": "Sara Russert"
+      },
+      "class-02-demo": {
+        "title": "Express API Day 1",
+        "link": "https://zoom.us/rec/share/YZFxCjTKUoalO_D0F4X0AsebuCwLp0BgAlbuO9NSK_eGOAt2X8bReG9gzKmKtS4N.z4N9dzA-ba0PM6R6",
+        "date": "1688608875000",
+        "instructor": "Sara Russert"
+      },
+      "class-03": {
+        "title": "Sequelize, Models, and Crud",
+        "link": "https://zoom.us/rec/share/EhHtzyjaXbiDwxxgOB0gZ1V0FMfOyb5tQ9lX2EypTBcL42pfs8RbqNlPFzjPQY2h.b8C2_4wnUEjcjI8k",
+        "date": "1688832588000",
+        "instructor": "Sara Russert"
+      },
+      "class-04-dsa-review": {
+        "title": "Array Binary Search & Route Testing Strategies",
+        "link": "https://zoom.us/rec/share/-9-IJViDNyjRs_3wUyByapkZDhVl_nDxMdLnhRpUG19j7Fc9uiXlU-ti_01uMkY.BnaU59HG9mxXEvWA",
+        "date": "1689039102000",
+        "instructor": "Sara Russert"
+      },
+      "class-04-demo": {
+        "title": "Model Collection and Associations",
+        "link": "https://zoom.us/rec/share/fBxiTdls1llr32cqZgSJpFvDETZ2Lq2w3ISXUUK5eOqKNfyZi6BBRCVOGzno3xmC.MpbcGsT4V1H1F5UV",
+        "date": "1689125469000",
+        "instructor": "Sara Russert"
+      },
+      "class-04-lab-review": {
+        "title": "Association Review",
+        "link": "https://zoom.us/rec/share/KWgDR1EA_MgFcfWFIkVUPF_-SwwQsno6NFfTT_xXVFiTHdxwwLE2gbqlXWqmcsG6.xRtPzis3TEnSwv28",
+        "date": "1689211867000",
+        "instructor": "Sara Russert"
+      },
+      "class-04-lecture": {
+        "title": "First Mock Interviews",
+        "link": "https://zoom.us/rec/share/SBy9YD2pw6TtmhYMRHGqzeLdVXyWGk0xfhHx5MiYzXbwpSN-SXPRzRuLujZFJ6DY.dzJxI52zCFrLDGLB",
+        "date": "1689298257000",
+        "instructor": "Sara Russert"
+      },
+      "class-05": {
+        "title": "Career Workshop Resumes and Linked Lists",
+        "link": "https://zoom.us/rec/share/RyW0JmklUM7UUxNJjeAfUqcqgXfTznxZ9eNuken3DW_7LUqL9wm0gEWkOxczy3K4.Tz42h_E0i7htKNFL",
+        "date": "1689436892000",
+        "instructor": "John Cokos/Sarah Russert"
+      }
+    },
+    "module-02": {
+      "class-06-dsa-a": {
+        "title": "Linked List insert/toString/includes",
+        "link": "https://zoom.us/rec/share/MRo6by3hJd_cmzERIx0ktiYP0dj7sStDt349eoxDVvrkPCe7YimE4OjP25vu6DuG.CCHqly0OFrH_JNFJ",
+        "date": "1689643952000",
+        "instructor": "Sara Russert"
+      },
+      "class-06-demo": {
+        "title": "Basic Auth",
+        "link": "https://zoom.us/rec/share/_5f_mWawiffhDz5FKyNraMm1HZszIp9RiNu6olgSLo9_MNN-7zU45zdWqY-W0sXW.wZSUl2yjJTJrGsVB",
+        "date": "1689730266000",
+        "instructor": "Sara Russert"
+      },
+      "class-06-lab-review": {
+        "title": "Lab Review Basic Auth/Test Strategy",
+        "link": "https://zoom.us/rec/share/tLOCbTH4UcorUtR9NQ1ux36YRB6-UIOEYzuB8v-SqXs27rgkvMIr_36c0dHIdArt.sBjUseNV8YrDJGyh",
+        "date": "1689819811000",
+        "instructor": "Sara Russert"
+      },
+      "class-06-dsa-b": {
+        "title": "Code Challenge Linked List Append/InsertAfter/InsertBefore",
+        "link": "https://zoom.us/rec/share/_vH8dVUE4HlK7vRoMnGzTa-k48kvL2NvHG0Dn4NTzP6nQ-1dKU_zJAlQOZBM3j5T.Y0Mo1CZjUKEMmWJY",
+        "date": "1689906211000",
+        "instructor": "Sara Russert"
+      },
+      "class-07": {
+        "title": "Bearer Auth",
+        "link": "https://zoom.us/rec/share/jbIb_Cmtl744tgYZRo33_Rwbu4UahzPCy9pe1wgWjY9In-h0Js0b_EWlGsXohbfE.xF-1WMpQwClx6c9e",
+        "date": "1690079011000",
+        "instructor": "Sara Russert"
+      },
+      "class-07-dsa": {
+        "title": "Code Challenge Kth from the end",
+        "link": "https://zoom.us/rec/share/UoDwnFet2rDm4dgQyLauvPefeAxdUMaFwGBO2JIDRPnSQWCm-C2gIIODeXgFkwDJ.RUJg_5WWK7u50AWY%20",
+        "date": "1690251811000",
+        "instructor": "Sara Russert"
+      },
+      "class-07-dsa-review": {
+        "title": "Code Review: Code Challenge Kth from the end",
+        "link": "https://zoom.us/rec/share/OsrayXNVdo8w86diyk0CjACS1A-cgDSItDAUzcHKmtA2TWXRfaVSoT00QBn7NqMN.tKXIOGYcqeznOwVd",
+        "date": "1690251811000",
+        "instructor": "Sara Russert"
+      },
+      "class-08-dsa-a": {
+
+      }
+    },
+    "module-03": {
+      "class-11": {
+        "title": "Event Driven Applications",
+        "link": "https://zoom.us/rec/share/nE1xR0spmQFZ_WjQWgVF8IfU9FQqRLpI686VEErx0HO5NyAUpTt2ugzWY4qAzbdL.WVoaZi3Fp_bwPthl",
+        "date": "1677517200000",
+        "instructor": "Sara Russert"
+      },
+      "class-12": {
+        "title": "Socket.io",
+        "link": "https://zoom.us/rec/share/jP6BLtc3QC_IFUUnX-n3HLRmy1xD7XpOteT6eaLwpu4PUG-_zJk_VKnzFurgowRu.g_h7pGfdeiv5yymI",
+        "date": "1677603600000",
+        "instructor": "Sara Russert"
+      },
+      "class-13": {
+        "title": "Message Queues",
+        "link": "https://zoom.us/rec/share/iDTXLrPlq8xdVzU0mOpa2qWwCr7Y2m5luz8JO4SinxRapDXx1N01ZsTlWV_6zlQ.5YEqVm10JStw8Cnd",
+        "date": "1677690000000",
+        "instructor": "Sara Russert"
+      },
+      "class-14": {
+        "title": "Realtime Module Final Project",
+        "link": "https://zoom.us/rec/share/P2zh__o4CgzuNeyYNUMFISip-ALjsKLsVmOhqnlmbDuacEtVtJWJeB6tVItu9jI4.uisE5lBQ4B_lN16a",
+        "date": "1677776400000",
+        "instructor": "Sara Russert"
+      },
+      "class-15-career-coaching": {
+        "title": "Job Search Workshop",
+        "link": "https://zoom.us/rec/share/qBn4aQWf6f_A7LYB-FtsHLpEzZ8H2JTqp6ya-JDU06pobtqpYxHbO5oqxXf0vy70.pZ8bTHsH54nMWDBV",
+        "date": "1677862800000",
+        "instructor": "Dr Robin Apparicio"
+      },
+      "class-15-dsa": {
+        "title": "Trees",
+        "link": "https://zoom.us/rec/share/2LdDzg3W2B8jnissIP3A4KPTBYUbJu_frWTZotjKSU_uE2IdE5ABYsJJTnySqtK2.dpxNiPQZkCXsEmdA",
+        "date": "1677880800000",
+        "instructor": "Sara Russert"
+      }
+    },
+    "module-04": {
+      "class-16": {
+        "title": "AWS: Cloud Servers",
+        "link": "https://zoom.us/rec/share/ZpeuO_JE7f60-aFobSnaiD3ch4G3UNkmzw85NhECRXzU-Hb7VA08TzFDw1NeWqZ9.NHXBE1Z0H8MPwSXx",
+        "date": "1678122000000",
+        "instructor": "Sara Russert"
+      },
+      "class-17": {
+        "title": "AWS: S3 and Lambda",
+        "link": "https://zoom.us/rec/share/gp0fqb5qEpUlTfPxgcwBDm5xQJaNRzHDz9DWbZa97YQVNajvK3ik-STngHIFb7Wr.6Pwe9XCzaSIk337B",
+        "date": "1678208400000",
+        "instructor": "Sara Russert"
+      },
+      "class-18": {
+        "title": "AWS: API, Dynamo and Lambda",
+        "link": "https://zoom.us/rec/share/lPVDrMkWW2kiDczicnKrMawwxpWDPhl-XvY85NOmtN0h0W0lcNwkLWuiCtzKPXJX.130IIS01MtE8Ll_H",
+        "date": "1678294800000",
+        "instructor": "Sara Russert"
+      },
+      "class-19": {
+        "title": "AWS: Events",
+        "link": "https://zoom.us/rec/share/yatSvNXNzxvfM_4J7tipwe_6V1q4kht_fbczU1DimzLVVNKKz-tmubC3nHTsRpYM.qsG8lA0ERacdgGHt",
+        "date": "1678381200000",
+        "instructor": "Sara Russert"
+      },
+      "class-20": {
+        "title": "Mid Term Projects Kickoff",
+        "link": "https://zoom.us/rec/share/ZeRvCa5NzPB5l3o19QDMvsFwyNe8irqKycKTk5gdXqjL5Z-gZ0298_vwxwrePm_m.zmAQP5uf_-KEI2f-",
+        "date": "1678467600000",
+        "instructor": "Sara Russert"
+      }
+    },
+    "module-06": {
+      "class-26": {
+        "title": "Component Based UI",
+        "link": "https://zoom.us/rec/share/9HKYHzt83it-QYn_A3duSZnJXURVgwDWsWQrRNDjfvR5AfWceBWZq8aw8378gGi9.Pns9xzHSvTRPw3Ku",
+        "date": "1679328000000",
+        "instructor": "Sara Russert"
+      },
+      "class-27": {
+        "title": "useState() Hook",
+        "link": "https://zoom.us/rec/share/4JcjCnpW88pVwkZ-sh-2aWOEZAbzAtOeJu2l6JOjQZU1ly_33ElEwER6xQnq66G_.bEW9CZQK_0uwYyMu",
+        "date": "1679414400000",
+        "instructor": "Sara Russert"
+      },
+      "class-28": {
+        "title": "Component Lifecycle / useEffect() Hook",
+        "link": "https://zoom.us/rec/share/F-0IPBQIP1xF_VAazEuIiVZSkZVQn5jGkG7rvd_PYFE9azMRiryCSmQD7SVy72Mw.iHlmcXNEnM9LH2Pf",
+        "date": "1679500800000",
+        "instructor": "Sara Russert"
+      },
+      "class-29": {
+        "title": "Advanced State with Reducers",
+        "link": "https://zoom.us/rec/share/nkJIt6bmtq9vwGP0XP2twu_WO5eY9UZyCLABRaGMTHXFrGNij2eX84vKgBnGPqbY.CSYZJNxIW9Nw2vrD",
+        "date": "1679587200000",
+        "instructor": "Sara Russert"
+      },
+      "class-30-career-coaching": {
+        "title": "Behavioral Interview Workshop",
+        "link": "https://zoom.us/rec/share/5i4NyTTpx7M_VhmdIsBLTZNvysZDCFbckyiGCKqpDAoUieoxwmBlHDkzec1-MNRD.qaml22nolIXijwFw",
+        "date": "1679673600000",
+        "instructor": "Roger Huba"
+      },
+      "class-30-dsa": {
+        "title": "Hash Tables",
+        "link": "https://zoom.us/rec/share/0yu3VM0MeufgstDiNupiYTf52uOy9PclA_2qPeXaWLHBTQogoQbOj5ivxTaM5cHv.E9hY6-pblxRSsqH8",
+        "date": "1679691600000",
+        "instructor": "Sara Russert"
+      }
+    },
+    "module-07": {
+      "class-31": {
+        "title": "Context API",
+        "link": "https://zoom.us/rec/share/MRVhOcAuP4quEYPqJhAt1V3QAU_GKxYbT9YQ5YOVaRsqvHqEqEdBy9DSOJZj8245.jH8SZFpNCF-dPOty",
+        "date": "1679932800000",
+        "instructor": "Sara Russert"
+      },
+      "class-32": {
+        "title": "Context API - Behaviors",
+        "link": "https://zoom.us/rec/share/Gp0cbl_3fGw_VCnUuCXMX1ZFzqba8dVaMJC_QPpAT1GRv6OAY_KDx52SXtGx0jVG.VpqPfSSCX5dQsJHC",
+        "date": "1680019200000",
+        "instructor": "Sara Russert"
+      },
+      "class-33": {
+        "title": "Login and Auth",
+        "link": "https://zoom.us/rec/share/Cq3oU8B0ud1x_XYEBFeWN-GsyuAbGHIcP1UQIr5wQXX8d0cjapujlS_VAS9Qo7uB.rpQK-hvMR0OPHPgL",
+        "date": "1680105600000",
+        "instructor": "Sara Russert"
+      },
+      "class-34": {
+        "title": "API Integration",
+        "link": "https://zoom.us/rec/share/Pgy4024N4eqaECBpXeEpQIUOwnOvg_uk_RjIo55w1Cs7ztM9QZMEQk33u7aPA9P3.Fk6RnmLINaskdUkL",
+        "date": "1680192000000",
+        "instructor": "Sara Russert"
+      },
+      "class-35-career-coaching": {
+        "title": "Technical Interview Workshop",
+        "link": "https://zoom.us/rec/share/Ojuu6k7vRgkLUO-F7Ue-jdMx9s4k7mVbdGsn98_eqGKZVzEbwZjkAEiCG_wTQQ7p.XhZqdAuPS6LMKuox",
+        "date": "1680278400000",
+        "instructor": "Sara Russert"
+      },
+      "class-35-dsa": {
+        "title": "Graphs",
+        "link": "https://zoom.us/rec/share/tlEn_J5berGHRFvw4eEzdrvv-iPLE2nTFK7V7kgVlU0dHOE0GAiuPgOLdg3lP-C_.c3eenY1SpodH4APR",
+        "date": "1680296400000",
+        "instructor": "Sara Russert"
+      }
+    },
+    "module-08": {
+      "class-36": {
+        "title": "",
+        "link": "https://zoom.us/rec/share/OJQz4UFYJMTqbmN9rEpPBGtRvJl9MkyZF_4LfMYjH8_78oGlFZBZUyAZZcmyUa18.DmbSPKNg3dwzXMq7",
+        "date": "1680537600000",
+        "instructor": "Sara Russert"
+      },
+      "class-37": {
+        "title": "",
+        "link": "https://zoom.us/rec/share/WnzkFUQgACv9i_2gSDqkMI8WBDf8ebJHwsE1Hdvh2nVcVy1TTzQCWQNBXMFQcd8F.btNFd7vP8wXiOSAj",
+        "date": "1680624000000",
+        "instructor": "Sara Russert"
+      },
+      "class-38": {
+        "title": "Redux - Asynchronous Actions, Thunk",
+        "link": "https://zoom.us/rec/share/csoig_zAnDYCbrq3xGe4m-ibIw48MiWEn8EOD1mqMQblVAnhgNFZZ8vb4xNkrbEO.C29A5dlIbUf73Odg",
+        "date": "1680710400000",
+        "instructor": "Sara Russert"
+      },
+      "class-39": {
+        "title": "Redux Tool Kit",
+        "link": "https://zoom.us/rec/share/YZNMwjPzn_tupSCwELLX90ELMWiU62jc5J5zJ9ybhowWRbHrGoAT7sUagrRPt-g.zFCHphwzckH-ORnJ",
+        "date": "1680796800000",
+        "instructor": "Sara Russert"
+      },
+      "class-40-coaching": {
+        "title": "Personal Presentations",
+        "link": "https://zoom.us/rec/share/CBPPSDSKiPkLrhB-mqEFB_GWdQ78YY_Bjzj1WZiPHBwlhyQqxF01mXIsDYz3AD1N.AlzgMksxjI_l-xe5",
+        "date": "1680883200000",
+        "instructor": "Roger Huba"
+      }
+    },
+    "module-09": {
+      "class-41": {
+        "title": "React Native",
+        "link": "https://zoom.us/rec/share/hcwOVgytaADHvxtV5vm1LMc62OaeGMqnREP6q855ejGpjgx5xEvGS7wFcpUc0ewk.BL24VaD_UMjZJveQ0",
+        "date": "1681142400000",
+        "instructor": "Sara Russert"
+      },
+      "class-42": {
+        "title": "React Native - Advanced",
+        "link": "https://zoom.us/rec/share/lmwyClti_qyysiErbDC633S6cZmZAL3aEIIzJhqtY7tNnoYfdoa1M3tGjOpXGGtf.nfNqZqGR3UqK0Wv4",
+        "date": "1681228800000",
+        "instructor": "Sara Russert"
+      },
+      "class-43": {
+        "title": "Gatsby, next.js, and other JS Frameworks",
+        "link": "https://zoom.us/rec/share/fYBi-Pzzx1HfzNVtuhkqdswFWyIPYYvq6uI6yqAdaDWwHOOupbBeCzLsdv7xM7F3.vyShsK7uC-Ah6ofD",
+        "date": "1681315200000",
+        "instructor": "Sara Russert"
+      },
+      "class-44": {
+        "title": "Ethics. Open Source",
+        "link": "https://zoom.us/rec/share/yKjlK6E961wyABbiIKueupVIyjWUXsAQLpCTT6-Yju7QZQT5FEY6rw-hrHKm7KXC.g1SLh67eCx0EHriv?startTime=1674752572000",
+        "date": "1674752572000",
+        "instructor": "Sara Russert"
+      },
+      "class-45": {
+        "title": "Final Projects",
+        "link": "https://zoom.us/rec/share/vboJIsAEIWJrXyplDkf1B5JHPMLQav9QSJINTfbeT-pz8BUHM5ah9zSKyz9QCzg3.lQjwlN-POCskYMDH",
+        "date": "1681488000000",
+        "instructor": "Sara Russert"
+      }
+    }
+  }
+}
