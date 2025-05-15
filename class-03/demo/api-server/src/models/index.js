@@ -4,7 +4,20 @@
 const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' : process.env.DATABASE_URL;
 const { Sequelize, DataTypes } = require('sequelize');
 
-let sequelize = new Sequelize(POSTGRES_URI);
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+});
+
+sequelize.authenticate()
+  .then(() => console.log('Connected!'))
+  .catch(err => console.error('Connection failed:', err));
+
+
 
 // our schema definitions
 const people = require('./people.model.js');
