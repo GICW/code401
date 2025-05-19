@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
-    "watch": "NODE_ENV=development nodemon app.js",
+"scripts": {
+  "start": "node app.js",
+  "watch": "nodemon app.js"
+},
+
     "init:config": "sequelize init:config",
     "db:create": "sequelize db:create",
     "test-watch": "NODE_ENV=test jest --watchAll",

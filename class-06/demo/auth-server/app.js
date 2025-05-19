@@ -1,6 +1,7 @@
 'use strict';
 
 // 3rd Party Resources
+require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const base64 = require('base-64');
@@ -9,93 +10,71 @@ const { Sequelize, DataTypes } = require('sequelize');
 // Prepare the express app
 const app = express();
 
-// Using NODE_ENV in our package.json scripts
-console.log('what environment are we using:', process.env.NODE_ENV);
+console.log('Environment:', process.env.NODE_ENV);
 
-// connect to Postgres database
-const sequelize = new Sequelize('postgres://localhost:5432/auth');
-
-// Process JSON input and put the data on req.body
-app.use(express.json());
-
-// Process FORM input and put the data on req.body
-app.use(express.urlencoded({ extended: true }));
-
-// Create a Sequelize model
-const Users = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
+// Connect to Postgres database using environment variable
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: { rejectUnauthorized: false }  // if your DB requires SSL (common in managed DBs)
   }
 });
 
-// perform a function before you create and save a new user
-Users.beforeCreate((user, options) => {
-  console.log(user); // what might we want to do programmatically before User data is persisted?
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Sequelize model
+const Users = sequelize.define('User', {
+  username: { type: DataTypes.STRING, allowNull: false },
+  password: { type: DataTypes.STRING, allowNull: false }
 });
 
-// Signup Route -- create a new user
-// Two ways to test this route with httpie
-// echo '{"username":"john","password":"foo"}' | http post :3000/signup
-// http post :3000/signup username=john password=foo
-app.post('/signup', async (req, res) => {
+// Before create hook (you can hash password here too if you want)
+Users.beforeCreate((user) => {
+  console.log('Creating user:', user.username);
+});
 
+// Signup route
+app.post('/signup', async (req, res) => {
   try {
     req.body.password = await bcrypt.hash(req.body.password, 10);
     const record = await Users.create(req.body);
     res.status(200).json(record);
-  } catch (e) { res.status(403).send("Error Creating User"); }
+  } catch (e) {
+    res.status(403).send("Error Creating User");
+  }
 });
 
-
-// Signin Route -- login with username and password
-// test with httpie
-// http post :3000/signin -a john:foo
+// Signin route
 app.post('/signin', async (req, res) => {
-
-  /*
-    req.headers.authorization is : "Basic sdkjdsljd="
-    To get username and password from this, take the following steps:
-      - Turn that string into an array by splitting on ' '
-      - Pop off the last value
-      - Decode that encoded string so it returns to user:pass
-      - Split on ':' to turn it into an array
-      - Pull username and password from that array
-  */
-
-  let basicHeaderParts = req.headers.authorization.split(' ');  // ['Basic', 'sdkjdsljd=']
-  let encodedString = basicHeaderParts.pop();  // sdkjdsljd=
-  let decodedString = base64.decode(encodedString); // "username:password"
-  let [username, password] = decodedString.split(':'); // username, password
-
-  /*
-    Now that we finally have username and password, let's see if it's valid
-    1. Find the user in the database by username
-    2. Compare the plaintext password we now have against the encrypted password in the db
-       - bcrypt does this by re-encrypting the plaintext password and comparing THAT
-    3. Either we're valid or we throw an error
-  */
   try {
-    const user = await Users.findOne({ where: { username: username } });
+    let basicHeaderParts = req.headers.authorization.split(' ');
+    let encodedString = basicHeaderParts.pop();
+    let decodedString = base64.decode(encodedString);
+    let [username, password] = decodedString.split(':');
+
+    const user = await Users.findOne({ where: { username } });
+    if (!user) throw new Error('User not found');
+
     const valid = await bcrypt.compare(password, user.password);
     if (valid) {
       res.status(200).json(user);
+    } else {
+      throw new Error('Invalid User');
     }
-    else {
-      throw new Error('Invalid User')
-    }
-  } catch (error) { res.status(403).send("Invalid Login"); }
-
+  } catch (error) {
+    res.status(403).send("Invalid Login");
+  }
 });
 
-// make sure our tables are created, start up the HTTP server.
+// Sync DB and start server
 sequelize.sync()
   .then(() => {
-    app.listen(3000, () => console.log('server up'));
-  }).catch(e => {
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(`Server up on port ${process.env.PORT || 3000}`);
+    });
+  })
+  .catch(e => {
     console.error('Could not start server', e.message);
   });
