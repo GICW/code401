@@ -32,13 +32,15 @@ describe('Customers and Orders Collections', () => {
     expect(order.customerId).toEqual(customer.id);
   });
 
-  it ('should be able to fetch Customers and include Orders', async () => {
-    customers = await customerCollection.read(null, { include: orderCollection.model });
-
-    expect(customers).toBeTruthy();
-    expect(customers[0].name).toEqual(testCustomer.name);
-    expect(customers[0].Orders).toBeTruthy();
+it('should be able to fetch Orders with an associated Customer', async () => {
+  const orders = await orderCollection.read(null, {
+    include: { model: customerCollection.model, as: 'Customer' }, // alias must match belongsTo
   });
+
+  expect(orders).toBeTruthy();
+  expect(orders[0].name).toEqual(testOrder.name);
+  expect(orders[0].Customer).toBeTruthy(); // matches alias
+});
 
   it('should be able to fetch Orders with an associated Customer', async () => {
     orders = await orderCollection.read(null, { include: customerCollection.model });

@@ -1,9 +1,11 @@
 {
   "name": "data-models",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express + Sequelize API for customers and orders",
+  "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "test": "NODE_ENV=test jest --verbose --coverage",
     "watch": "NODE_ENV=test jest --watchAll --verbose --coverage"
   },
@@ -11,10 +13,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "jest": "^26.6.3",
-    "pg": "^8.6.0",
-    "sequelize": "^6.6.2",
-    "sqlite3": "^5.0.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.11.1",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "jest": "^29.6.4",
+    "nodemon": "^2.0.22"
   }
 }

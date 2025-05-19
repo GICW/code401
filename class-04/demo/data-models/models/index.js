@@ -1,28 +1,43 @@
 'use strict';
 
 require('dotenv').config();
-const POSTGRES_URI = process.env.DATABASE_URL;
 const { Sequelize, DataTypes } = require('sequelize');
-
 const Collection = require('./lib/collection.js');
 const customerSchema = require('./customer');
 const orderSchema = require('./order');
 
-let sequelize = process.env.NODE_ENV === 'test' ? new Sequelize('sqlite::memory:') : new Sequelize(POSTGRES_URI);
+const POSTGRES_URI = process.env.DATABASE_URL;
+
+let sequelize;
+
+if (process.env.NODE_ENV === 'test') {
+  sequelize = new Sequelize('sqlite::memory:', { logging: false });
+} else {
+  sequelize = new Sequelize(POSTGRES_URI, {
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+    logging: false,
+  });
+}
 
 const customerModel = customerSchema(sequelize, DataTypes);
 const orderModel = orderSchema(sequelize, DataTypes);
 
-// create our associations that will add `foreign KEYS` to our SQL tables
-customerModel.hasMany(orderModel, { foreignKey: 'customerId', sourceKey: 'id'});
-orderModel.belongsTo(customerModel, { foreignKey: 'customerId', targetKey: 'id'});
+// Associations
+customerModel.hasMany(orderModel, { foreignKey: 'customerId', sourceKey: 'id' });
+orderModel.belongsTo(customerModel, { foreignKey: 'customerId', targetKey: 'id' });
 
-// create the collection class for each model
+// Collections
 const customerCollection = new Collection(customerModel);
 const orderCollection = new Collection(orderModel);
 
 module.exports = {
   db: sequelize,
-  orderCollection,
   customerCollection,
-}
+  orderCollection,
+};

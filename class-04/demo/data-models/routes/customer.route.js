@@ -1,53 +1,56 @@
-"use strict";
+'use strict';
 
-const express = require("express");
-
-const { customerCollection, orderCollection } = require("../models/index");
-
+const express = require('express');
+const { customerCollection, orderCollection } = require('../models/index');
 const router = express.Router();
 
-// RESTful route declarations
-router.get("/customers", getCustomers);
-router.get("/customers/:id", getOneCustomer);
-router.post("/customers", createCustomer);
-router.put("/customers/:id", updateCustomer);
-router.delete("/customers/:id", deleteCustomer);
+router.get('/customers', async (req, res) => {
+  try {
+    const customers = await customerCollection.read(null, { include: orderCollection.model });
+    res.status(200).json(customers);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
 
-// route handlers
-async function getCustomers(req, res) {
-  let allCustomers = await customerCollection.read(null, {
-    include: { model: orderCollection.model },
-  });
-  res.status(200).json(allCustomers);
-}
+router.get('/customers/:id', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const customer = await customerCollection.read(id, { include: orderCollection.model });
+    if (!customer) return res.status(404).json({ error: 'Customer not found' });
+    res.status(200).json(customer);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
 
-async function getOneCustomer(req, res) {
-  let id = parseInt(req.params.id);
-  let theCustomer = await customerCollection.read(id, {
-    include: { model: orderCollection.model },
-  });
-  const orders = await theCustomer.getOrders();
-  console.log(orders);
-  res.status(200).json(theCustomer);
-}
+router.post('/customers', async (req, res) => {
+  try {
+    const customer = await customerCollection.create(req.body);
+    res.status(201).json(customer);
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
 
-async function createCustomer(req, res) {
-  let obj = req.body;
-  let newCustomer = await customerCollection.create(obj);
-  res.status(200).json(newCustomer);
-}
+router.put('/customers/:id', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const customer = await customerCollection.update(id, req.body);
+    res.status(200).json(customer);
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
 
-async function updateCustomer(req, res) {
-  let obj = req.body;
-  let id = parseInt(req.params.id);
-  let updatedCustomer = await customerCollection.update(id, obj);
-  res.status(200).json(updatedCustomer);
-}
-
-async function deleteCustomer(req, res) {
-  let id = parseInt(req.params.id);
-  let deletedCustomer = await customerCollection.delete(id);
-  res.status(204).json(deletedCustomer);
-}
+router.delete('/customers/:id', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    await customerCollection.delete(id);
+    res.status(204).send();
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
 
 module.exports = router;
