@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/routes/people.js</title>
+    <title>Code coverage report for src/routes/clothes.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -18,7 +18,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/routes</a> people.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/routes</a> clothes.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -103,41 +103,30 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -147,54 +136,71 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
 const express = require('express');
-const { People } = require('../models');
+&nbsp;
+const Clothes = require('../models/index.js');
 &nbsp;
 const router = express.Router();
 &nbsp;
 // RESTful Route Declarations
-router.get('/people', getPeople);
-router.get('/people/:id', getOnePerson);
-router.post('/people', createPerson);
-router.put('/people/:id', updatePerson);
-router.delete('/people/:id', deletePerson);
+router.get('/clothes', getClothes);
+router.get('/clothes/:id', getOneClothes);
+router.post('/clothes', createClothes);
+router.put('/clothes/:id', updateClothes);
+router.delete('/clothes/:id', deleteClothes);
 &nbsp;
 // RESTful Route Handlers
-async function <span class="fstat-no" title="function not covered" >getPeople(</span>req, res) {
-  let allPeople = <span class="cstat-no" title="statement not covered" >await People.findAll();</span>
-<span class="cstat-no" title="statement not covered" >  res.status(200).json(allPeople);</span>
+async function <span class="fstat-no" title="function not covered" >getClothes(</span>req, res) {
+  let allClothes = <span class="cstat-no" title="statement not covered" >await Clothes.findAll();</span>
+<span class="cstat-no" title="statement not covered" >  res.status(200).json(allClothes);</span>
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >getOnePerson(</span>req, res) {
+async function <span class="fstat-no" title="function not covered" >getOneClothes(</span>req, res) {
   const id = <span class="cstat-no" title="statement not covered" >parseInt(req.params.id);</span>
-  let person = <span class="cstat-no" title="statement not covered" >await People.findOne({ where: { id: id } });</span>
-<span class="cstat-no" title="statement not covered" >  res.status(200).json(person);</span>
+  let theClothes = <span class="cstat-no" title="statement not covered" >await Clothes.findOne({ where: { id } });</span>
+<span class="cstat-no" title="statement not covered" >  res.status(200).json(theClothes);</span>
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >createPerson(</span>req, res) {
+async function <span class="fstat-no" title="function not covered" >createClothes(</span>req, res) {
   let obj = <span class="cstat-no" title="statement not covered" >req.body;</span>
-  let person = <span class="cstat-no" title="statement not covered" >await People.create(obj);</span>
-<span class="cstat-no" title="statement not covered" >  res.status(200).json(person);</span>
+  let newClothes = <span class="cstat-no" title="statement not covered" >await Clothes.create(obj);</span>
+<span class="cstat-no" title="statement not covered" >  res.status(200).json(newClothes);</span>
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >updatePerson(</span>req, res) {
+async function <span class="fstat-no" title="function not covered" >updateClothes(</span>req, res) {
   const id = <span class="cstat-no" title="statement not covered" >parseInt(req.params.id);</span>
   const obj = <span class="cstat-no" title="statement not covered" >req.body;</span>
-  let person = <span class="cstat-no" title="statement not covered" >await People.findOne({ where: { id: id } });</span>
-  let updatedPerson = <span class="cstat-no" title="statement not covered" >await person.update(obj);</span>
-<span class="cstat-no" title="statement not covered" >  res.status(200).json(updatedPerson);</span>
+  let clothes = <span class="cstat-no" title="statement not covered" >await Clothes.findOne({ where: { id } });</span>
+  let updatedClothes = <span class="cstat-no" title="statement not covered" >await clothes.update(obj);</span>
+<span class="cstat-no" title="statement not covered" >  res.status(200).json(updatedClothes);</span>
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >deletePerson(</span>req, res) {
+async function <span class="fstat-no" title="function not covered" >deleteClothes(</span>req, res) {
   let id = <span class="cstat-no" title="statement not covered" >parseInt(req.params.id);</span>
-  let deletedPerson = <span class="cstat-no" title="statement not covered" >await People.destroy({ where: { id } });</span>
-<span class="cstat-no" title="statement not covered" >  res.status(204).json(deletedPerson);</span>
+  let deletedClothes = <span class="cstat-no" title="statement not covered" >await clothes.destroy({ where: { id } });</span>
+<span class="cstat-no" title="statement not covered" >  res.status(200).json(deletedClothes);</span>
 }
+&nbsp;
 &nbsp;
 module.exports = router;
 &nbsp;</pre></td></tr></table></pre>
@@ -204,7 +210,7 @@ module.exports = router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 26 2025 08:20:56 GMT-0700 (Pacific Daylight Time)
+                at Thu Jun 26 2025 08:07:04 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

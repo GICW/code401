@@ -1,5 +1,7 @@
 'use strict';
 
+global.TextEncoder = require('util').TextEncoder; 
+
 require('dotenv').config();
 const { server } = require('../src/server-phase-3.js');
 const supertest = require('supertest');

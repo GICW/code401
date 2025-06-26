@@ -1,14 +1,32 @@
 'use strict';
 
-require('dotenv').config();
-// const server = require('./src/server-phase-1.js');
-// const server = require('./src/server-phase-2.js');
-const server = require('./src/server-phase-3.js');
+const { Sequelize, DataTypes } = require('sequelize');
 
-const { db } = require('./src/models/index.js');
+// Use SQLite in-memory for tests, otherwise use DATABASE_URL
+const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite::memory:' : process.env.DATABASE_URL;
 
-db.sync()
-  .then(() => {
-    server.start(3000);
-  })
-  .catch(console.error);
+const sequelizeOptions =
+  process.env.NODE_ENV === 'test'
+    ? {} // SQLite doesn't need dialectOptions
+    : {
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        },
+      };
+
+const sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
+
+sequelize.authenticate()
+  .then(() => console.log('Connected!'))
+  .catch(err => console.error('Connection failed:', err));
+
+// Define your model(s)
+const people = require('./people.model.js');
+
+module.exports = {
+  db: sequelize,
+  People: people(sequelize, DataTypes),
+};
