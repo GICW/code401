@@ -5,18 +5,18 @@ const { db, customerCollection, orderCollection } = require('../models/');
 beforeAll(async () => {
   await db.sync();
 });
+
 afterAll(async () => {
   await db.drop();
 });
 
 describe('Customers and Orders Collections', () => {
-
   let testCustomer = {
     name: 'test customer',
-  }
+  };
   let testOrder = {
     name: 'test order',
-  }
+  };
   let customers = null;
   let customer = null;
   let orders = null;
@@ -32,33 +32,29 @@ describe('Customers and Orders Collections', () => {
     expect(order.customerId).toEqual(customer.id);
   });
 
-it('should be able to fetch Orders with an associated Customer', async () => {
-  const orders = await orderCollection.read(null, {
-    include: { model: customerCollection.model, as: 'Customer' }, // alias must match belongsTo
-  });
-
-  expect(orders).toBeTruthy();
-  expect(orders[0].name).toEqual(testOrder.name);
-  expect(orders[0].Customer).toBeTruthy(); // matches alias
-});
-
   it('should be able to fetch Orders with an associated Customer', async () => {
-    orders = await orderCollection.read(null, { include: customerCollection.model });
+    const orders = await orderCollection.read(null, {
+      include: {
+        model: customerCollection.model,
+        as: 'Customer', 
+      },
+    });
 
     expect(orders).toBeTruthy();
     expect(orders[0].name).toEqual(testOrder.name);
     expect(orders[0].Customer).toBeTruthy();
+    expect(orders[0].Customer.name).toEqual(testCustomer.name);
   });
 
   it('should be able to update a Customer', async () => {
-    customer = await customerCollection.update(customer.id, {name: 'test customer 2'});
+    customer = await customerCollection.update(customer.id, { name: 'test customer 2' });
 
     expect(customer).toBeTruthy();
     expect(customer.name).toEqual('test customer 2');
   });
 
-  it ('should be able to update an Order', async () => {
-    order = await orderCollection.update(order.id, {name: 'test order 2'});
+  it('should be able to update an Order', async () => {
+    order = await orderCollection.update(order.id, { name: 'test order 2' });
 
     expect(order).toBeTruthy();
     expect(order.name).toEqual('test order 2');
@@ -70,7 +66,6 @@ it('should be able to fetch Orders with an associated Customer', async () => {
     expect(orderId).toEqual(order.id);
 
     orders = await orderCollection.read();
-
     expect(orders.length).not.toBeTruthy();
   });
 
@@ -80,7 +75,6 @@ it('should be able to fetch Orders with an associated Customer', async () => {
     expect(customerId).toEqual(customer.id);
 
     customers = await customerCollection.read();
-    
     expect(customers.length).not.toBeTruthy();
-  })
+  });
 });

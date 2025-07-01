@@ -28,9 +28,16 @@ if (process.env.NODE_ENV === 'test') {
 const customerModel = customerSchema(sequelize, DataTypes);
 const orderModel = orderSchema(sequelize, DataTypes);
 
-// Associations
-customerModel.hasMany(orderModel, { foreignKey: 'customerId', sourceKey: 'id' });
-orderModel.belongsTo(customerModel, { foreignKey: 'customerId', targetKey: 'id' });
+customerModel.hasMany(orderModel, {
+  foreignKey: 'customerId',
+  sourceKey: 'id',
+  as: 'Orders', 
+});
+orderModel.belongsTo(customerModel, {
+  foreignKey: 'customerId',
+  targetKey: 'id',
+  as: 'Customer',
+});
 
 // Collections
 const customerCollection = new Collection(customerModel);
@@ -40,4 +47,6 @@ module.exports = {
   db: sequelize,
   customerCollection,
   orderCollection,
+  Customer: customerModel,
+  Order: orderModel,
 };
