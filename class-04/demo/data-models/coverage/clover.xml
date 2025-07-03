@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1751383668755" clover="3.2.0">
-  <project timestamp="1751383668755" name="All files">
+<coverage generated="1751387637837" clover="3.2.0">
+  <project timestamp="1751387637837" name="All files">
     <metrics statements="49" coveredstatements="38" conditionals="9" coveredconditionals="5" methods="7" coveredmethods="7" elements="65" coveredelements="50" complexity="0" loc="49" ncloc="49" packages="4" files="4" classes="4"/>
     <package name="models">
       <metrics statements="16" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
@@ -17,11 +17,11 @@
         <line num="16" count="0" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
       </file>
     </package>
     <package name="models.customer">
