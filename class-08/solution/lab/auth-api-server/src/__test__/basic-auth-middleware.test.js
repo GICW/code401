@@ -1,5 +1,11 @@
 'use strict';
 
+// Add at the top of each test file or in jest.setup.js
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
+
 // require('@code-fellows/supergoose');
 const middleware = require('../middleware/basic.js');
 const { db, users } = require('../models');

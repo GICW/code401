@@ -1,3 +1,9 @@
+// Add at the top of each test file or in jest.setup.js
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
+
 const loggerMiddleware = require('../middleware/logger.js');
 
 // Tested middleware needs to either be exported from the server or a separate module

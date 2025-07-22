@@ -27,6 +27,6 @@
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.2",
-    "supertest": "^6.0.1"
+    "supertest": "^6.3.4"
   }
 }

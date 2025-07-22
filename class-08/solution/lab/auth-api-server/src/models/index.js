@@ -10,7 +10,15 @@ const environment = process.env.NODE_ENV;
 const testOrProduction = (environment === 'test' || environment === 'production');
 const DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory:';
 
-const sequelize = new Sequelize(DATABASE_URL, testOrProduction ? { logging: false } : {});
+const sequelize = new Sequelize(DATABASE_URL, {
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // for self-signed certs; safe to use in dev
+    },
+  },
+});
 
 const users = userModel(sequelize, DataTypes);
 const food = foodModel(sequelize, DataTypes);
