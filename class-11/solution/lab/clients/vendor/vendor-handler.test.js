@@ -12,21 +12,21 @@ jest.mock('../../lib/events', () => {
 console.log = jest.fn();
 
 describe('Vendor', () => {
-  let payload = {
+  const payload = {
     store: '1-206-flowers',
     orderId: 'test123',
     customer: 'Tester',
     address: 'home',
   };
+
   it('emits an order as expected', () => {
     createPackage(payload);
     expect(console.log).toHaveBeenCalledWith('VENDOR: we have an order ready');
     expect(eventPool.emit).toHaveBeenCalledWith('PICKUP', payload);
   });
 
-  it('thanks driver', (payload) => {
-    thankDriver(payload);
+  it('thanks driver', () => {
+    thankDriver(payload); // <--- FIXED: removed `(payload)` from `it(...)` args
     expect(console.log).toHaveBeenCalledWith('Thank you for ordering Tester!');
-
   });
 });
