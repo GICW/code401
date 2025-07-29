@@ -1,4 +1,5 @@
-import { createStyles, Header, Navbar, Text } from '@mantine/core';
+import React from 'react';
+import { createStyles, Navbar, Text, Header } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -13,12 +14,13 @@ const AppHeader = ({ incomplete }) => {
   const { classes } = useStyles();
 
   return (
-    <Header data-testid="todo-header" style={{ borderBottom: 0 }}>
-    <Navbar className={classes.navbar}>
-      <Text>Home</Text>
-    </Navbar>
-  </Header>
-  )
+    <Header data-testid="todo-header" height={60} p="xs">
+      <Navbar className={classes.navbar}>
+        <Text>Home</Text>
+      </Navbar>
+    </Header>
+  );
 };
 
-export default AppHeader
+
+export default AppHeader;

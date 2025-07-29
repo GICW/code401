@@ -3,7 +3,6 @@ import useForm from '../../hooks/form.js';
 import { v4 as uuid } from 'uuid';
 import { Card, Grid, Text, TextInput, createStyles, Button, Slider } from '@mantine/core';
 import List from '../List/List';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 const useStyles = createStyles((theme) => ({
