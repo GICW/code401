@@ -10,9 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import { When } from 'react-if';
 
-import { add } from '../../store/cart.js'
+import { add } from '../../store/cart.js';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -33,52 +32,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Products = props => {
-
   const classes = useStyles();
 
   return (
-    <>
-      <Container className={classes.cardGrid} maxWidth="md">
-        <Grid container spacing={4}>
-          {props.products.map((product) => (
-            <When condition={product.category === props.activeCategory}>
-              <Grid item key={product.name} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={`https://source.unsplash.com/random?${product.name}`}
-                    title={product.name}
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {product.name}
-                    </Typography>
-                    <Typography>
-                      {product.description}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary" onClick={() => props.add(product)}>
-                      Add To Cart
+    <Container className={classes.cardGrid} maxWidth="md">
+      <Grid container spacing={4}>
+        {props.products
+          .filter(product => product.category === props.activeCategory)
+          .map(product => (
+            <Grid item key={product._id || product.name} xs={12} sm={6} md={4}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={`https://source.unsplash.com/random?${product.name}`}
+                  title={product.name}
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {product.name}
+                  </Typography>
+                  <Typography>
+                    {product.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary" onClick={() => props.add(product)}>
+                    Add To Cart
                   </Button>
-                    <Button size="small" color="primary">
-                      View Details
+                  <Button size="small" color="primary">
+                    View Details
                   </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            </When>
+                </CardActions>
+              </Card>
+            </Grid>
           ))}
-        </Grid>
-      </Container>
-    </>
+      </Grid>
+    </Container>
   );
-
 }
 
 const mapStateToProps = state => ({
   products: state.products,
-  activeCategory: state.categories.activeCategory
+  activeCategory: state.categories.activeCategory,
 });
 
 const mapDispatchToProps = { add };
