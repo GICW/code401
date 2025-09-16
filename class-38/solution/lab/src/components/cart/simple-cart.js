@@ -1,27 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { When } from 'react-if';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import './simple-cart.scss';
+const useStyles = makeStyles((theme) => ({
+  cart: { padding: theme.spacing(2), background: '#f5f5f5', margin: theme.spacing(2) },
+}));
 
-const SimpleCart = props => {
+const SimpleCart = ({ cart }) => {
+  const classes = useStyles();
+
+  if (!cart || cart.length === 0) return <div className={classes.cart}>Cart is empty</div>;
 
   return (
-    <When condition={props.cart.length >= 1}>
-      <div className="simple-cart">
-        <ul>
-          {props.cart.map(item =>
-            <li key={item.name}>{item.name}</li>
-          )}
-        </ul>
-      </div>
-    </When>
+    <div className={classes.cart}>
+      <Typography variant="h6">Your Cart</Typography>
+      <List>
+        {cart.map(item => (
+          <ListItem key={item.id}>
+            <ListItemText primary={item.name} secondary={`Qty: 1`} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
   );
-}
+};
 
-const mapStateToProps = state => ({
-  cart: state.cart,
-});
-
-// Instead of exporing our component, export it after it's been connected to the Redux store.
+const mapStateToProps = state => ({ cart: state.cart });
 export default connect(mapStateToProps)(SimpleCart);

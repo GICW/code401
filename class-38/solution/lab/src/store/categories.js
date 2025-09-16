@@ -10,28 +10,23 @@ export default (state = initialState, action) => {
     case 'CATEGORY':
       return { ...state, activeCategory: payload };
     case 'INIT_CATEGORIES':
-      return { ...state, categoryList: payload.results }
+      return { ...state, categoryList: payload };
     default:
       return state;
   }
 };
 
-export const category = (name) => {
-  return {
-    type: 'CATEGORY',
-    payload: name
-  };
-};
+export const category = (name) => ({
+  type: 'CATEGORY',
+  payload: name
+});
 
 export const getCategories = () => async dispatch => {
-  let results = await fetch(`${process.env.REACT_APP_API}/categories`);
-  let records = await results.json();
-  dispatch(setCategories(records));
+  try {
+    let res = await fetch(`${process.env.REACT_APP_API}/categories`);
+    let data = await res.json();
+    dispatch({ type: 'INIT_CATEGORIES', payload: data });
+  } catch (err) {
+    console.error('Failed to load categories', err);
+  }
 };
-
-const setCategories = (list) => {
-  return {
-    type: 'INIT_CATEGORIES',
-    payload: list
-  };
-}
