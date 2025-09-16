@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -12,15 +12,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
-  listItem: {
-    padding: theme.spacing(1, 0),
-  },
-  total: {
-    fontWeight: 700,
-  },
-  title: {
-    marginTop: theme.spacing(2),
-  },
+  listItem: { padding: theme.spacing(1, 0) },
+  total: { fontWeight: 700 },
+  title: { marginTop: theme.spacing(2) },
   layout: {
     width: 'auto',
     marginLeft: theme.spacing(2),
@@ -44,9 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Checkout({ cart }) {
-
   const classes = useStyles();
-
   const total = cart.items.reduce((ttl, product) => ttl + product.price, 0);
 
   return (
@@ -76,44 +68,43 @@ function Checkout({ cart }) {
               <Typography variant="h6" gutterBottom className={classes.title}>
                 Billing Address
               </Typography>
-              <TextField id="name" name="name" label="Full Name" />
-              <TextField id="address" name="address" label="Address" />
-              <TextField id="city" name="city" label="City" />
-              <TextField id="state" name="state" label="State" />
-              <TextField id="zip" name="zip" label="zip" />
+              <TextField fullWidth id="name" name="name" label="Full Name" margin="dense"/>
+              <TextField fullWidth id="address" name="address" label="Address" margin="dense"/>
+              <TextField fullWidth id="city" name="city" label="City" margin="dense"/>
+              <TextField fullWidth id="state" name="state" label="State" margin="dense"/>
+              <TextField fullWidth id="zip" name="zip" label="Zip" margin="dense"/>
             </Grid>
 
             <Grid item xs={12} sm={6}>
               <Typography variant="h6" gutterBottom className={classes.title}>
                 Payment details
               </Typography>
-              <TextField id="cc_number" name="cc_number" label="Credit Card #" />
+              <TextField fullWidth id="cc_number" name="cc_number" label="Credit Card #" margin="dense"/>
               <TextField
+                fullWidth
                 id="date"
                 label="Expiration"
                 type="date"
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                InputLabelProps={{ shrink: true }}
+                margin="dense"
               />
-              <TextField id="cvv" name="cvv" label="CVV" />
+              <TextField fullWidth id="cvv" name="cvv" label="CVV" margin="dense"/>
             </Grid>
           </Grid>
 
-          <Grid container alignItems="center" justify="center" spacing={5}>
+          <Grid container alignItems="center" justifyContent="center" spacing={5}>
             <Grid item>
-              <Button variant="contained" color="primary">Place Your Order</Button>
+              <Button variant="contained" color="primary">
+                Place Your Order
+              </Button>
             </Grid>
           </Grid>
         </Paper>
       </form>
-    </div >
+    </div>
   );
 }
 
-const mapStateToProps = state => ({
-  cart: state.cart,
-});
+const mapStateToProps = state => ({ cart: state.cart });
 
-// Instead of exporing our component, export it after it's been connected to the Redux store.
 export default connect(mapStateToProps)(Checkout);

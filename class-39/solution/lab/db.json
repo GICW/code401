@@ -1,0 +1,50 @@
+{
+  "categories": [
+    {
+      "_id": "1",
+      "name": "electronics",
+      "displayName": "Electronics",
+      "id": "1995"
+    },
+    {
+      "_id": "2",
+      "name": "clothing",
+      "displayName": "Clothing",
+      "id": "d43c"
+    }
+  ],
+  "products": [
+    {
+      "inStock": 3,
+      "id": "57e2"
+    },
+    {
+      "_id": "2",
+      "name": "Smartphone",
+      "description": "Latest model smartphone",
+      "category": "electronics",
+      "inStock": 9,
+      "price": 900,
+      "id": "c098"
+    },
+    {
+      "_id": "3",
+      "name": "T-Shirt",
+      "description": "Comfortable cotton t-shirt",
+      "category": "clothing",
+      "inStock": 16,
+      "price": 25,
+      "id": "fb09"
+    },
+    {
+      "_id": "4",
+      "name": "Jeans",
+      "description": "Stylish blue jeans",
+      "category": "clothing",
+      "inStock": 11,
+      "price": 50,
+      "id": "c49f"
+    }
+  ],
+  "cart": []
+}

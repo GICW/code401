@@ -1,17 +1,16 @@
 import superagent from 'superagent';
-
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState: { items: [], customer: {}, paymentInfo: {} },
   reducers: {
     add(state, action) {
-      state.items = state.items.filter(product => product.name !== action.payload.name);
+      state.items = state.items.filter(product => product.id !== action.payload.id);
       state.items.push(action.payload);
     },
     remove(state, action) {
-      state.items = state.items.filter(product => product._id !== action.payload._id);
+      state.items = state.items.filter(product => product.id !== action.payload.id);
     },
     updateCustomer(state, action) {
       state.customer = action.payload;
@@ -20,25 +19,29 @@ const cartSlice = createSlice({
       state.paymentInfo = action.payload;
     }
   }
-})
+});
 
 export const addToCart = (product) => async dispatch => {
-  let updatedProduct = { inStock: product.inStock - 1 };
-  let url = `${process.env.REACT_APP_API}/products/${product._id}`;
-  let results = await superagent.put(url).send(updatedProduct);
-  let record = results.body;
-  dispatch(add(record));
+  try {
+    const updatedProduct = { inStock: product.inStock - 1 };
+    const url = `${process.env.REACT_APP_API}/products/${product.id}`;
+    const res = await superagent.put(url).send(updatedProduct);
+    dispatch(cartSlice.actions.add(res.body));
+  } catch(err) {
+    console.error("Error adding to cart:", err.message);
+  }
 };
 
 export const removeFromCart = (product) => async dispatch => {
-  let updatedProduct = { inStock: product.inStock + 1 };
-  let url = `${process.env.REACT_APP_API}/products/${product._id}`;
-  let results = await superagent.put(url).send(updatedProduct);
-  let record = results.body;
-  dispatch(remove(record));
+  try {
+    const updatedProduct = { inStock: product.inStock + 1 };
+    const url = `${process.env.REACT_APP_API}/products/${product.id}`;
+    const res = await superagent.put(url).send(updatedProduct);
+    dispatch(cartSlice.actions.remove(res.body));
+  } catch(err) {
+    console.error("Error removing from cart:", err.message);
+  }
 };
 
-// Not publishing this internal action, only the thunk'd one above
-const { add, remove } = cartSlice.actions
-
-export default cartSlice.reducer
+export const { add, remove, updateCustomer, updatePaymentInfo } = cartSlice.actions;
+export default cartSlice.reducer;

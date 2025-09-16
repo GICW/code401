@@ -1,14 +1,13 @@
 import superagent from 'superagent';
-
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const productSlice = createSlice({
   name: 'products',
-  initialState: { productList: [], activeProduct: {} },
+  initialState: {
+    productList: [],
+    activeProduct: {}
+  },
   reducers: {
-    add(state, action) {
-      return state.map(product => product.name === action.payload.name ? action.payload : product);
-    },
     setProductList(state, action) {
       state.productList = action.payload;
     },
@@ -16,21 +15,26 @@ const productSlice = createSlice({
       state.activeProduct = action.payload;
     }
   }
-})
+});
 
 export const getProducts = (category) => async dispatch => {
-  let response = await superagent.get(`${process.env.REACT_APP_API}/products`);
-  let records = response.body.results || [];
-  let products = records.filter(product => product.category === category && product.inStock > 0);
-  dispatch(setProductList(products));
+  try {
+    let response = await superagent.get(`${process.env.REACT_APP_API}/products`);
+    let products = response.body.filter(p => p.category === category && p.inStock > 0); // filter
+    dispatch(setProductList(products));
+  } catch (error) {
+    console.error('Error fetching products:', error.message);
+  }
 };
 
 export const getProduct = (id) => async dispatch => {
-  let response = await superagent.get(`${process.env.REACT_APP_API}/products/${id}`);
-  let record = response.body || {};
-  dispatch(setActiveProduct(record));
+  try {
+    let response = await superagent.get(`${process.env.REACT_APP_API}/products/${id}`);
+    dispatch(setActiveProduct(response.body));
+  } catch (error) {
+    console.error('Error fetching product:', error.message);
+  }
 };
 
-export const { add, setActiveProduct, setProductList } = productSlice.actions
-
-export default productSlice.reducer
+export const { setActiveProduct, setProductList } = productSlice.actions;
+export default productSlice.reducer;
