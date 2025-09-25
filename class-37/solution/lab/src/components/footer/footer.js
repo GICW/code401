@@ -17,7 +17,7 @@ const Footer = props => {
   return (
     <footer className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
-        &copy; 2020 Javascript 401
+        &copy; 2025 Javascript 401
         </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
         React + Redux + Material UI

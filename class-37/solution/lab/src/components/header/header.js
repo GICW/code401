@@ -1,10 +1,9 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,23 +16,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = props => {
-
+const Header = ({ cart }) => {
   const classes = useStyles();
 
   return (
     <AppBar className={classes.appBar} position="relative">
       <Toolbar className={classes.toolbar}>
-        <Grid container>
-          <Grid item xs>
-            <Typography variant="h4">
-              Our Store
-            </Typography>
+<Grid container alignItems="center" justifyContent="space-between">
+          <Grid item>
+            <Typography variant="h4">Our Store</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="h6">Cart ({cart.length})</Typography>
           </Grid>
         </Grid>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
-export default Header;
+const mapStateToProps = state => ({
+  cart: state.cart
+});
+
+export default connect(mapStateToProps)(Header);
